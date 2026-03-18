@@ -32,11 +32,28 @@ const [post, usePost] = useState({
            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="inserisci titolo"></input>
           </div>
         </div>
-        
+        <div className='row'>
+          <div className='col-8'>
+          <p>inserisci il testo</p>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div className='col-2'>
+            <p>Privato</p>
+              <input class="form-check-input" type="radio"></input>
+              </div>
+              <div className='col-2'>
+                <p>Publico</p>
+            <input class="form-check-input" type="radio"></input>
+              </div>
+             
+
+          
+        </div>
+
           
         
         
-        
+    
           
       </div>
      
