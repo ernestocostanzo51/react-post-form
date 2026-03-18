@@ -11,32 +11,38 @@ const [post, usePost] = useState({
   public: false
 })
 
+
+
   const link = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts"
-  useEffect(() =>{
-    fetch(link)
-    .then(res => res.json())
-    .then(data => {
-      usePost(data)
-    })
-  }, [])
+  
 
   function handleChange(e) {
     const { name, value, type } = e.target.value;
-    setPost({...post,[name]: type === 'radio' ? (value === 'true') : value
+    usePost({...post,[name]: type === 'radio' ? (value === 'true') : value
     });
   }
 
+  function apiCall(a){
+    e.preventDefault();
+
+    fetch(link) 
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+
+  }
 
   return (
     <>
      <div className='container'>
-      <form>
+      <form onSubmit={apiCall}>
       <div className='row'>
           <div className='col-6 m-3'>
             <p>Autore:</p>
            <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleFormControlInput1"
             placeholder='inserisci autore'
             name='name'
@@ -48,7 +54,7 @@ const [post, usePost] = useState({
             <p>Titolo:</p>
            <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleFormControlInput1"
             placeholder="inserisci titolo"
             name='title'
@@ -61,7 +67,7 @@ const [post, usePost] = useState({
           <div className='col-8'>
           <p>inserisci il testo</p>
           <textarea
-           class="form-control"
+           className="form-control"
            id="exampleFormControlTextarea1"
            rows="3"
            value={post.body}
@@ -71,7 +77,7 @@ const [post, usePost] = useState({
           <div className='col-1'>
             <p>Privato</p>
               <input
-               class="form-check-input"
+               className="form-check-input"
                type="radio"
                name="public" 
                value="false" 
@@ -82,7 +88,7 @@ const [post, usePost] = useState({
               <div className='col-1'>
                 <p>Publico</p>
             <input
-             class="form-check-input"
+             className="form-check-input"
               type="radio"
               name="public" 
               value="false" 
